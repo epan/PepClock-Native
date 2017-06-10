@@ -26,7 +26,7 @@ class Login extends React.Component {
       if (authed) {
         this.setState({ isAuthed: true });
       } else {
-        this.setState({ failMessage: 'yo ass aint logged in!'});
+        this.setState({ failMessage: 'Incorrect email or password'});
       }
     })
     .catch((err) => {
@@ -64,11 +64,11 @@ class Login extends React.Component {
         />
         <Button
           onPress={this.submitLogin}
-          title='Log your ass in!'
+          title='Log in'
         />
         <Button
           onPress={this.logout}
-          title='Log your ass out!'
+          title='Log out'
         />
       </View>
     );
