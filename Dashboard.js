@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const Dashboard = () => {
   return (
-    <Text>Dashbaord</Text>
+    <Text>Dashboard</Text>
   );
 }
 
