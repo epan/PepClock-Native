@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Redirect } from 'react-router-native';
 import axios from 'axios';
 
@@ -26,10 +26,10 @@ class Login extends React.Component {
       if (authed) {
         this.setState({ isAuthed: true });
       } else {
-        this.setState({ failMessage: 'Incorrect email or password'});
+        this.setState({ failMessage: 'Incorrect email or password' });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
     });
   }
