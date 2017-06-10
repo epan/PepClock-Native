@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Redirect } from 'react-router-native';
 import axios from 'axios';
+import styles from '../styles/main';
 
 class Login extends React.Component {
   constructor(props) {
@@ -45,11 +46,11 @@ class Login extends React.Component {
     }
 
     return (
-      <View style={{width: 300}}>
+      <View>
         <Text>{this.state.failMessage}</Text>
         <Text>Username</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.inputField}
           onChangeText={(email) => { this.setState({email}); }}
           value={this.state.email}
           autoCapitalize='none'
@@ -57,7 +58,7 @@ class Login extends React.Component {
         />
         <Text>Password</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+          style={styles.inputField}
           onChangeText={(password) => { this.setState({password}); }}
           value={this.state.password}
           secureTextEntry={true}

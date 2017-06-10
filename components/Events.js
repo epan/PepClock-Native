@@ -36,7 +36,4 @@ class Events extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-
-});
 export default Events;
