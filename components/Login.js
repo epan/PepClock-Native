@@ -12,7 +12,7 @@ class Login extends React.Component {
       password: '',
       isAuthed: false,
       failMessage: ''
-    }
+    };
 
     this.submitLogin = this.submitLogin.bind(this);
     this.logout = this.logout.bind(this);
@@ -24,24 +24,24 @@ class Login extends React.Component {
       password: this.state.password
     }).then(({ data: authed }) => {
       if (authed) {
-        this.setState({ isAuthed: true })
+        this.setState({ isAuthed: true });
       } else {
-        this.setState({ failMessage: 'yo ass aint logged in!'})
+        this.setState({ failMessage: 'yo ass aint logged in!'});
       }
     })
     .catch((err) => {
       console.log(err);
-    })
+    });
   }
 
   logout () {
     axios.get('http://127.0.0.1:3000/logout')
-      .then(response => console.log(response))
+      .then(response => console.log(response));
   }
 
   render() {
     if ( this.state.isAuthed ) {
-      return <Redirect to="/events" />
+      return <Redirect to="/" />;
     }
 
     return (
@@ -50,7 +50,7 @@ class Login extends React.Component {
         <Text>Username</Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(email) => { this.setState({email}) }}
+          onChangeText={(email) => { this.setState({email}); }}
           value={this.state.email}
           autoCapitalize='none'
           autoCorrect={false}
@@ -58,7 +58,7 @@ class Login extends React.Component {
         <Text>Password</Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(password) => { this.setState({password}) }}
+          onChangeText={(password) => { this.setState({password}); }}
           value={this.state.password}
           secureTextEntry={true}
         />
@@ -71,7 +71,7 @@ class Login extends React.Component {
           title='Log your ass out!'
         />
       </View>
-    )
+    );
   }
 }
 

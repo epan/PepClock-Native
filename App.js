@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
-import Dashboard from './Dashboard';
-import Events from './Events';
-import Login from './Login';
+import Events from './components/Events';
+import Login from './components/Login';
 
 export default class App extends React.Component {
   render() {
@@ -14,11 +13,6 @@ export default class App extends React.Component {
             <View style={styles.nav}>
               <Link
                 to='/'
-                underlayColor='#f0f4f7'
-                style={styles.navItem}>
-                  <Text>Dashboard</Text></Link>
-              <Link
-                to='/events'
                 style={styles.navItem}>
                   <Text>Events</Text></Link>
               <Link
@@ -27,8 +21,7 @@ export default class App extends React.Component {
                   <Text>Login</Text></Link>
             </View>
 
-          <Route exact path='/' component={Dashboard}/>
-          <Route path='/events' component={Events}/>
+          <Route exact path='/' component={Events}/>
           <Route path='/login' component={Login}/>
         </View>
       </NativeRouter>
