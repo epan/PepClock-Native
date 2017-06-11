@@ -18,9 +18,9 @@ class Events extends React.Component {
         let events = data.map(({ event }) => event.title);
         console.log(events);
 
-        this.setState({events: events});
+        this.setState({ events });
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   }
 
   render () {
