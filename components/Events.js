@@ -15,10 +15,7 @@ class Events extends React.Component {
   componentDidMount () {
     axios.get('http://127.0.0.1:3000/api/events/users')
       .then(({ data }) => {
-        // console.log(data.event);
         let events = data.map(({ event }) => ({ id: event.id, title: event.title}));
-        console.log('event list to render: ', events);
-
         this.setState({events: events});
       })
       .catch(err => console.log(err));
