@@ -20,7 +20,7 @@ class Login extends React.Component {
   }
 
   submitLogin () {
-    axios.post('http://127.0.0.1:3000/login/mobile', {
+    axios.post('http://127.0.0.1:3000/api/mobile/login', {
       email: this.state.email.trim(),
       password: this.state.password
     }).then(({ data: authed }) => {
@@ -37,7 +37,9 @@ class Login extends React.Component {
 
   logout () {
     axios.get('http://127.0.0.1:3000/logout')
-      .then(response => console.log(response));
+      .then(response => {
+        this.setState({failMessage: 'logged out'});
+      });
   }
 
   render() {

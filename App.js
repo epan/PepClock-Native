@@ -4,6 +4,7 @@ import { NativeRouter, Route, Link } from 'react-router-native';
 import styles from './styles/main';
 import Events from './components/Events';
 import Login from './components/Login';
+import Event from './components/Event'
 
 export default class App extends React.Component {
   render() {
@@ -13,7 +14,7 @@ export default class App extends React.Component {
             <Text>Hello PepClock-Native</Text>
             <View style={styles.nav}>
               <Link
-                to='/events'
+                to='/'
                 style={styles.navItem}>
                   <Text>Events</Text></Link>
               <Link
@@ -24,6 +25,7 @@ export default class App extends React.Component {
 
           <Route exact path='/' component={Events}/>
           <Route path='/login' component={Login}/>
+          <Route path='/events/:id' component={Event}/>
         </View>
       </NativeRouter>
     );
