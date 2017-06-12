@@ -4,7 +4,8 @@ import { NativeRouter, Route, Link } from 'react-router-native';
 import styles from './styles/main';
 import Events from './components/Events';
 import Login from './components/Login';
-import Event from './components/Event'
+import Event from './components/Event';
+import Create from './Create';
 
 export default class App extends React.Component {
   render() {
@@ -21,11 +22,19 @@ export default class App extends React.Component {
                 to='/login'
                 style={styles.navItem}>
                   <Text>Login</Text></Link>
+              <Link
+                to='/create'
+                style={styles.navItem}>
+                  <Text>Create</Text></Link>
             </View>
 
           <Route exact path='/' component={Events}/>
           <Route path='/login' component={Login}/>
+<<<<<<< HEAD
           <Route path='/events/:id' component={Event}/>
+=======
+          <Route path='/create' component={Create}/>
+>>>>>>> has create form
         </View>
       </NativeRouter>
     );
