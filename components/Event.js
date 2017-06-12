@@ -7,22 +7,24 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
-      title: ''
+      title: '',
+      recipientFirstName: '',
+      recipientLastName: ''
     }
   }
 
   componentDidMount () {
     axios.get(`http://127.0.0.1:3000/api/events/${this.props.match.params.id}`)
       .then(({ data }) => {
-        console.log(data)
         this.setState({
           title: data.title,
           recipientFirstName: data.recipient.first_name,
           recipientLastName: data.recipient.last_name
         })
       })
-      .catch((response) => {
-      })
+      .catch((error) => {
+        console.log(error)
+      });
   }
 
   render() {
