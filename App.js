@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NativeRouter, Route, Link } from 'react-router-native';
+import styles from './styles/main';
 import Events from './components/Events';
 import Login from './components/Login';
 
@@ -12,7 +13,7 @@ export default class App extends React.Component {
             <Text>Hello PepClock-Native</Text>
             <View style={styles.nav}>
               <Link
-                to='/'
+                to='/events'
                 style={styles.navItem}>
                   <Text>Events</Text></Link>
               <Link
@@ -28,30 +29,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 25,
-    padding: 10,
-    alignItems: 'center',
-  },
-  header: {
-    fontSize: 20
-  },
-  nav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around'
-  },
-  navItem: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 10,
-  },
-  subNavItem: {
-    padding: 5
-  },
-  topic: {
-    textAlign: 'center',
-    fontSize: 15
-  }
-});
