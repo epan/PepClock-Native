@@ -5,7 +5,7 @@ import styles from './styles/main';
 import Events from './components/Events';
 import Login from './components/Login';
 import Event from './components/Event';
-import Create from './Create';
+import Create from './components/Create';
 
 export default class App extends React.Component {
   render() {
@@ -30,11 +30,8 @@ export default class App extends React.Component {
 
           <Route exact path='/' component={Events}/>
           <Route path='/login' component={Login}/>
-<<<<<<< HEAD
           <Route path='/events/:id' component={Event}/>
-=======
           <Route path='/create' component={Create}/>
->>>>>>> has create form
         </View>
       </NativeRouter>
     );

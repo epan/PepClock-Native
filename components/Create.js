@@ -26,14 +26,12 @@ class Create extends React.Component {
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
  
   _handleDatePicked = (deliveryTime) => {
-    console.log('A date has been picked: ', deliveryTime);
     this.setState({ deliveryTime });
 
     this._hideDateTimePicker();
   };
 
   handleChangeTags(tags) {
-    console.log(tags);
     this.setState({ tags });
   };
 
@@ -47,7 +45,7 @@ class Create extends React.Component {
         lastName: this.state.lastName,
         email: this.state.email,
         deliveryTime: this.state.deliveryTime,
-        inviteEmails: tags
+        inviteEmails: this.state.tags
       }
     }).then(response => {
       this.setState({eventId: response.data.id, redirectToEvent: true});
