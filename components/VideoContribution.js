@@ -59,7 +59,6 @@ class VideoContribution extends Component {
         <Video
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
-          resizeMode={'Expo.Video.RESIZE_MODE_STRETCH'}
           style={styles.back}
           onLoad={ loadedVideo => this.setState({ loadedVideo }) }
           isLooping={true}
