@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, WebView } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { Video } from 'expo';
 
 class ContributionListItem extends React.Component {
