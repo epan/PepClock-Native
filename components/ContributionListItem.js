@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Video } from 'expo';
+import VideoContribution from './VideoContribution';
 
 class ContributionListItem extends React.Component {
   constructor(props) {
@@ -9,19 +10,6 @@ class ContributionListItem extends React.Component {
     this.state = {
       playbackObject: null
     };
-
-    this._handleVideoRef = this._handleVideoRef.bind(this);
-    this.handleVideoTap = this.handleVideoTap.bind(this);
-  }
-
-  _handleVideoRef (component) {
-    const playbackObject = component;
-    this.setState({playbackObject: playbackObject});
-  }
-
-  handleVideoTap (component) {
-    console.log('component is:', component);
-    console.log('video touched');
   }
 
   render() {
@@ -40,17 +28,7 @@ class ContributionListItem extends React.Component {
     if (this.props.contribution.type === 'video') {
       return (
         <View>
-          <TouchableOpacity onPress={this.handleVideoTap}>
-            <Video
-              source={{uri: this.props.contribution.media_url}}
-              ref={this._handleVideoRef}
-              style={{width: 300, height: 300}}
-              onLoad={(component) => {
-                this.state.playbackObject.playAsync(component);
-              }}
-              isLooping={true}
-            />
-          </TouchableOpacity>
+          <VideoContribution url={this.props.contribution.media_url} />
           <Text>{this.props.contribution.text}</Text>
         </View>
       );
