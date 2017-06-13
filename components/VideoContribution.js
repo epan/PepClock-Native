@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Image, Text } from 'react-native';
 import { Video } from 'expo';
 
 class VideoContribution extends Component {
@@ -30,8 +30,12 @@ class VideoContribution extends Component {
   }
 
   render () {
+    const message = this.state.isPlaying ? '' : 'dis here be video';
     return (
       <TouchableOpacity onPress={this.handleVideoTap}>
+        <Text>
+          {message}
+        </Text>
         <Video
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
