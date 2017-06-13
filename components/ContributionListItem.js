@@ -19,7 +19,6 @@ class ContributionListItem extends React.Component {
   }
 
   render() {
-    let pic = this.props.contribution.media_url;
     if (this.props.contribution.type === 'image') {
       return (
         <View>
@@ -40,8 +39,6 @@ class ContributionListItem extends React.Component {
               source={{uri: this.props.contribution.media_url}}
               ref={this._handleVideoRef}
               style={{width: 300, height: 300}}
-              resizeMode={Video.RESIZE_MODE_CONTAIN}
-              onLoadStart={() => {}}
               onLoad={(component) => {
                 this.state.playbackObject.playAsync(component);
               }}

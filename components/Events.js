@@ -27,6 +27,7 @@ class Events extends React.Component {
         <Text>Event List</Text>
         <FlatList
           data={this.state.events}
+          keyExtractor={item => item.id}
           renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title}</Text></Link>}
         />
       </View>
