@@ -16,14 +16,17 @@ class VideoContribution extends Component {
     this.handleVideoTap = this.handleVideoTap.bind(this);
   }
 
-  _handleVideoRef (component) {
-    const playbackObject = component;
-    this.setState({playbackObject: playbackObject});
+  _handleVideoRef (playbackObject) {
+    this.setState({ playbackObject });
   }
 
-  handleVideoTap (component) {
-    console.log('component is:', component);
-    console.log('video touched');
+  handleVideoTap () {
+    if (this.state.isPlaying) {
+      this.state.playbackObject.pauseAsync(this.state.loadedVideo);
+    } else {
+      this.state.playbackObject.playAsync(this.state.loadedVideo);
+    }
+    this.setState({ isPlaying: !this.state.isPlaying });
   }
 
   render () {
@@ -33,10 +36,7 @@ class VideoContribution extends Component {
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
           style={{width: 300, height: 300}}
-          onLoad={(component) => {
-            this.state.playbackObject.playAsync(component);
-          }}
-          isLooping={true}
+          onLoad={ loadedVideo => this.setState({ loadedVideo }) }
         />
       </TouchableOpacity>
     );
