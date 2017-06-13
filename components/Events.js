@@ -22,11 +22,13 @@ class Events extends React.Component {
   }
 
   render () {
+    console.log(this.state.events)
     return (
       <View>
         <Text>Event List</Text>
         <FlatList
           data={this.state.events}
+          keyExtractor={item => item.id}
           renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title}</Text></Link>}
         />
       </View>

@@ -24,7 +24,8 @@ class ContributionList extends React.Component {
       <View>
         <FlatList
           data={this.state.contributions}
-          renderItem={({ item }) => <ContributionListItem contribution={item}/>}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => <ContributionListItem contribution={item} />}
         />
         <Text>ContributionList.js</Text>
       </View>

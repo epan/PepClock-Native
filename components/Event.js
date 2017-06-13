@@ -34,6 +34,7 @@ class Event extends React.Component {
         <Text>{this.state.title}</Text>
         <Text>A PepClock Lovingly Created for {this.state.recipientFirstName} {this.state.recipientLastName} </Text>
         <ContributionList
+          key={this.props.match.params.id}
           eventId={this.props.match.params.id}
         />
       </View>
