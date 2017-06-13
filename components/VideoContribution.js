@@ -3,16 +3,9 @@ import { TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
 import { Video } from 'expo';
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   back: {
     width: 300,
-    height: 300,
-    backgroundColor: 'blue',
+    height: 200,
     zIndex: 0
   },
   front: {
@@ -61,13 +54,12 @@ class VideoContribution extends Component {
       : <Image source={{uri: playIcon}} style={styles.front} />;
 
     return (
-      <TouchableOpacity
-        style={styles.wrapper}
-        onPress={this.handleVideoTap}>
+      <TouchableOpacity onPress={this.handleVideoTap}>
         {icon}
         <Video
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
+          resizeMode={'Expo.Video.RESIZE_MODE_STRETCH'}
           style={styles.back}
           onLoad={ loadedVideo => this.setState({ loadedVideo }) }
           isLooping={true}
