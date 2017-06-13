@@ -2,7 +2,7 @@
   "presets": ["babel-preset-expo"],
   "env": {
     "development": {
-      "plugins": ["transform-async-to-generator", "transform-react-jsx-source", ]
+      "plugins": ["transform-async-to-generator", "transform-react-jsx-source"]
     }
   }
 }
