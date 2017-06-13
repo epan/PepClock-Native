@@ -57,6 +57,7 @@ class Login extends React.Component {
           value={this.state.email}
           autoCapitalize='none'
           autoCorrect={false}
+          keyboardType="email-address"
         />
         <Text>Password</Text>
         <TextInput
