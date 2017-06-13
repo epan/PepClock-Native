@@ -23,6 +23,7 @@
     "apsl-react-native-button": "^3.0.2",
     "axios": "^0.16.2",
     "expo": "^17.0.0",
+    "exponent": "^14.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
     "react-native-modal-datetime-picker": "^4.6.0",

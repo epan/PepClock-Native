@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Event from './components/Event';
 import Create from './components/Create';
 import Notifications from './components/Notifications';
+import ContributionForm from './components/ContributionForm';
 
 export default class App extends React.Component {
   render() {
@@ -31,6 +32,10 @@ export default class App extends React.Component {
                 to='/notifications'
                 style={styles.navItem}>
                   <Text>Notifications</Text></Link>
+              <Link
+                to='/contributionform'
+                style={styles.navItem}>
+                  <Text>ContForm</Text></Link>
             </View>
 
           <Route exact path='/' component={Events}/>
@@ -38,6 +43,7 @@ export default class App extends React.Component {
           <Route path='/events/:id' component={Event}/>
           <Route path='/create' component={Create}/>
           <Route path='/notifications' component={Notifications}/>
+          <Route path='/contributionform' component={ContributionForm}/>
         </View>
       </NativeRouter>
     );
