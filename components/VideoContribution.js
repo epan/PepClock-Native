@@ -30,17 +30,20 @@ class VideoContribution extends Component {
   }
 
   render () {
-    const message = this.state.isPlaying ? '' : 'dis here be video';
+    const playIcon = 'https://d2ppvlu71ri8gs.cloudfront.net/items/1Z0I3a1e0L373s0K3e1u/play_icon.png';
+    const icon = this.state.isPlaying
+      ? null
+      : <Image source={{uri: playIcon}} style={{width: 40, height: 40}} />;
+
     return (
       <TouchableOpacity onPress={this.handleVideoTap}>
-        <Text>
-          {message}
-        </Text>
+        {icon}
         <Video
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
           style={{width: 300, height: 300}}
           onLoad={ loadedVideo => this.setState({ loadedVideo }) }
+          isLooping={true}
         />
       </TouchableOpacity>
     );
