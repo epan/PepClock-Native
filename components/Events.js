@@ -22,7 +22,6 @@ class Events extends React.Component {
   }
 
   render () {
-    console.log(this.state.events)
     return (
       <View>
         <Text>Event List</Text>
