@@ -5,6 +5,7 @@
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "jest-expo": "~1.0.1",
+    "react-devtools": "^2.3.3",
     "react-native-scripts": "0.0.31",
     "react-test-renderer": "16.0.0-alpha.6"
   },
@@ -20,11 +21,14 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "apsl-react-native-button": "^3.0.2",
     "axios": "^0.16.2",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "expo": "^17.0.0",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
+    "react-native-modal-datetime-picker": "^4.6.0",
+    "react-native-tag-input": "^0.0.14",
     "react-router-native": "^4.1.1"
   }
 }
