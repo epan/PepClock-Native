@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
+import ContributionList from './ContributionList';
 
 class Event extends React.Component {
   constructor(props) {
@@ -32,6 +33,9 @@ class Event extends React.Component {
       <View>
         <Text>{this.state.title}</Text>
         <Text>A PepClock Lovingly Created for {this.state.recipientFirstName} {this.state.recipientLastName} </Text>
+        <ContributionList
+          eventId={this.props.match.params.id}
+        />
       </View>
     );
   }
