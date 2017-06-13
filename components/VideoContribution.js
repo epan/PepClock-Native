@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Image, Text } from 'react-native';
+import { TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
 import { Video } from 'expo';
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  back: {
+    width: 300,
+    height: 300,
+    backgroundColor: 'blue',
+    zIndex: 0
+  },
+  front: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: 50,
+    height: 50,
+    marginLeft: -25,
+    marginTop: -25,
+    zIndex: 1
+  }
+});
 
 class VideoContribution extends Component {
   constructor(props) {
@@ -33,15 +58,17 @@ class VideoContribution extends Component {
     const playIcon = 'https://d2ppvlu71ri8gs.cloudfront.net/items/1Z0I3a1e0L373s0K3e1u/play_icon.png';
     const icon = this.state.isPlaying
       ? null
-      : <Image source={{uri: playIcon}} style={{width: 40, height: 40}} />;
+      : <Image source={{uri: playIcon}} style={styles.front} />;
 
     return (
-      <TouchableOpacity onPress={this.handleVideoTap}>
+      <TouchableOpacity
+        style={styles.wrapper}
+        onPress={this.handleVideoTap}>
         {icon}
         <Video
           source={{uri: this.props.url}}
           ref={this._handleVideoRef}
-          style={{width: 300, height: 300}}
+          style={styles.back}
           onLoad={ loadedVideo => this.setState({ loadedVideo }) }
           isLooping={true}
         />
