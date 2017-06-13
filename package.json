@@ -28,6 +28,7 @@
     "react-native": "^0.44.0",
     "react-native-modal-datetime-picker": "^4.6.0",
     "react-native-tag-input": "^0.0.14",
-    "react-router-native": "^4.1.1"
+    "react-router-native": "^4.1.1",
+    "superagent": "^3.5.2"
   }
 }

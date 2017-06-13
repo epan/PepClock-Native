@@ -10764,9 +10764,9 @@ react-native-branch@2.0.0-beta.3:
   dependencies:
     eventemitter3 "^2.0.2"
 
-"react-native-maps@git+https://github.com/exponent/react-native-maps.git#v0.12.2-exp.1":
+"react-native-maps@git+https://github.com/exponent/react-native-maps#v0.12.2-exp.1":
   version "0.12.2"
-  resolved "git+https://github.com/exponent/react-native-maps.git#268871ed909b02267671fb40576f50963f09bd7c"
+  resolved "git+https://github.com/exponent/react-native-maps#268871ed909b02267671fb40576f50963f09bd7c"
 
 "react-native-maps@https://github.com/expo/react-native-maps/archive/v0.14.0.tar.gz":
   version "0.14.0"
@@ -10810,9 +10810,9 @@ react-native-scripts@0.0.31:
     qrcode-terminal "^0.11.0"
     xdl "^41.0.0"
 
-"react-native-svg@git+https://github.com/exponent/react-native-svg.git#4.4.1":
+"react-native-svg@git+https://github.com/exponent/react-native-svg#4.4.1":
   version "4.4.1"
-  resolved "git+https://github.com/exponent/react-native-svg.git#e26bec094b87ada3fa2f2557210226d06f1aec5e"
+  resolved "git+https://github.com/exponent/react-native-svg#e26bec094b87ada3fa2f2557210226d06f1aec5e"
   dependencies:
     color "^0.11.1"
     lodash "^4.0.0"

@@ -16,6 +16,8 @@ import Exponent, {
   ImagePicker,
   registerRootComponent,
 } from 'exponent';
+import axios from 'axios';
+import superagent from 'superagent';
 
 export default class ContributionForm extends React.Component {
   state = {
@@ -137,6 +139,7 @@ export default class ContributionForm extends React.Component {
 
       if (!pickerResult.cancelled) {
         uploadResponse = await uploadImageAsync(pickerResult.uri);
+        console.log('uploadResponse',uploadResponse);
         uploadResult = await uploadResponse.json();
         this.setState({image: uploadResult.location});
       }
@@ -152,7 +155,7 @@ export default class ContributionForm extends React.Component {
 }
 
 async function uploadImageAsync(uri) {
-  let apiUrl = 'https://localhost:3000/api/uploads';
+  let apiUrl = 'http://127.0.0.1:3000/api/uploads';
   console.log('uploadImageAsync was called');
 
   // Note:
@@ -183,5 +186,28 @@ async function uploadImageAsync(uri) {
     },
   };
 
-  return fetch(apiUrl, options);
+  return superagent.post(apiUrl)
+      .attach(formData)
+      .end((err, res) => {
+        console.log('superagent res', res);
+        if (err) console.log(err);
+        alert('File uploaded!');
+      });
+
+  // axios({
+  //   method: 'post',
+  //   url: apiUrl,
+  //   data: formData,
+  //   headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'multipart/form-data',
+  //     }
+  //  })
+  // .then(response => {
+  //   console.log('axios response', response); 
+  //   return response; 
+  // })
+  // .catch(error => console.log('error in axios call', error));
+  // // return fetch(apiUrl, options);
+  // return fetch(apiUrl, options);
 }
