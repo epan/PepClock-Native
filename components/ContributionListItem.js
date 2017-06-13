@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Video } from 'expo';
 
 class ContributionListItem extends React.Component {
@@ -8,14 +8,20 @@ class ContributionListItem extends React.Component {
 
     this.state = {
       playbackObject: null
-    }
+    };
 
     this._handleVideoRef = this._handleVideoRef.bind(this);
+    this.handleVideoTap = this.handleVideoTap.bind(this);
   }
 
   _handleVideoRef (component) {
     const playbackObject = component;
     this.setState({playbackObject: playbackObject});
+  }
+
+  handleVideoTap (component) {
+    console.log('component is:', component);
+    console.log('video touched');
   }
 
   render() {
@@ -34,8 +40,8 @@ class ContributionListItem extends React.Component {
     if (this.props.contribution.type === 'video') {
       return (
         <View>
-          <Text>{this.props.contribution.text}</Text>
-          <Video
+          <TouchableOpacity onPress={this.handleVideoTap}>
+            <Video
               source={{uri: this.props.contribution.media_url}}
               ref={this._handleVideoRef}
               style={{width: 300, height: 300}}
@@ -44,6 +50,8 @@ class ContributionListItem extends React.Component {
               }}
               isLooping={true}
             />
+          </TouchableOpacity>
+          <Text>{this.props.contribution.text}</Text>
         </View>
       );
     }
