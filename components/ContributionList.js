@@ -26,7 +26,6 @@ class ContributionList extends React.Component {
           data={this.state.contributions}
           renderItem={({ item }) => <ContributionListItem contribution={item}/>}
         />
-        <Text>ContributionList.js</Text>
       </View>
     );
   }
