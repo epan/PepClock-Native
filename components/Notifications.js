@@ -15,7 +15,6 @@ class Notifications extends React.Component {
   componentDidMount () {
     axios.get('http://127.0.0.1:3000/api/invitations')
       .then(({ data }) => {
-        console.log('data ==>>', data)
         invitations = data.map(invite => {
           return {
             eventId: invite.event_id,
