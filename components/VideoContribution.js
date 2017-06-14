@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
 import { Video } from 'expo';
-
-const styles = StyleSheet.create({
-  back: {
-    width: 300,
-    height: 200,
-    zIndex: 0
-  },
-  front: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    width: 50,
-    height: 50,
-    marginLeft: -25,
-    marginTop: -25,
-    zIndex: 1
-  }
-});
+import styles from '../styles/main';
 
 class VideoContribution extends Component {
   constructor(props) {
