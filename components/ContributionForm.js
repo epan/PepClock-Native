@@ -139,13 +139,10 @@ export default class ContributionForm extends React.Component {
 
       if (!pickerResult.cancelled) {
         uploadResponse = await uploadImageAsync(pickerResult.uri);
-        console.log('uploadResponse',uploadResponse);
         uploadResult = await uploadResponse.json();
         this.setState({image: uploadResult.location});
       }
     } catch(e) {
-      console.log({uploadResponse});
-      console.log({uploadResult});
       console.log({e});
       alert('Upload failed, sorry :(');
     } finally {
@@ -158,20 +155,12 @@ async function uploadImageAsync(uri) {
   let apiUrl = 'http://127.0.0.1:3000/api/uploads';
   console.log('uploadImageAsync was called');
 
-  // Note:
-  // Uncomment this if you want to experiment with local server
-  //
-  // if (Constants.isDevice) {
-  //   apiUrl = `https://your-ngrok-subdomain.ngrok.io/upload`;
-  // } else {
-  //   apiUrl = `http://localhost:3000/upload`
-  // }
 
   let uriParts = uri.split('.');
   let fileType = uri[uri.length - 1];
 
   let formData = new FormData();
-  formData.append('photo', {
+  formData.append('media', {
     uri,
     name: `photo.${fileType}`,
     type: `image/${fileType}`,
@@ -185,29 +174,5 @@ async function uploadImageAsync(uri) {
       'Content-Type': 'multipart/form-data',
     },
   };
-
-  return superagent.post(apiUrl)
-      .attach(formData)
-      .end((err, res) => {
-        console.log('superagent res', res);
-        if (err) console.log(err);
-        alert('File uploaded!');
-      });
-
-  // axios({
-  //   method: 'post',
-  //   url: apiUrl,
-  //   data: formData,
-  //   headers: {
-  //       'Accept': 'application/json',
-  //       'Content-Type': 'multipart/form-data',
-  //     }
-  //  })
-  // .then(response => {
-  //   console.log('axios response', response); 
-  //   return response; 
-  // })
-  // .catch(error => console.log('error in axios call', error));
-  // // return fetch(apiUrl, options);
-  // return fetch(apiUrl, options);
+  return fetch(apiUrl, options);
 }
