@@ -16,7 +16,14 @@ class Events extends React.Component {
   componentDidMount () {
     axios.get('http://127.0.0.1:3000/api/events/users')
       .then(({ data }) => {
-        let events = data.map(({ event }) => ({ id: event.id, title: event.title}));
+        let events = data.map((event) => {
+          return {
+            id: event.event_id,
+            title: event.title,
+            firstName: event.first_name,
+            lastName: event.last_name
+          };
+        });
         this.setState({events: events});
       })
       .catch(err => console.log(err));
@@ -29,7 +36,7 @@ class Events extends React.Component {
         <FlatList
           data={this.state.events}
           keyExtractor={item => item.id}
-          renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title}</Text></Link>}
+          renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title} FOR {item.firstName} {item.lastName}</Text></Link>}
         />
       </View>
     );
