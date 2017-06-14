@@ -34,6 +34,10 @@ const main = StyleSheet.create({
   topic: {
     textAlign: 'center',
     fontSize: 15
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   }
 });
 
