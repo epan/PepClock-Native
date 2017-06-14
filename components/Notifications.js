@@ -15,9 +15,14 @@ class Notifications extends React.Component {
   componentDidMount () {
     axios.get('http://127.0.0.1:3000/api/invitations')
       .then(({ data }) => {
-        console.log(data)
-        let invitations = data.map(invite => { return {eventId: invite.event_id, title: invite.event.title, inviteId: invite.id}});
-        console.log(invitations)
+        invitations = data.map(invite => {
+          return {
+            eventId: invite.id,
+            title: invite.title,
+            inviteId: invite.invitations[0].id,
+            recipientFirstName: invite.recipient.first_name,
+            recipientLastName: invite.recipient.last_name
+          }});
         this.setState({invites: invitations})
       })
   }
@@ -29,7 +34,13 @@ class Notifications extends React.Component {
         <FlatList
           data={this.state.invites}
           keyExtractor={item => item.inviteId}
-          renderItem={({item}) => <Link to={`events/${item.eventId}?invite=${item.inviteId}`}><Text>{item.title}</Text></Link>}
+          renderItem={({item}) => {
+            return (
+              <Link to={`events/${item.eventId}?invite=${item.inviteId}`}>
+                <Text>{item.title} FOR {item.recipientFirstName} {item.recipientLastName}</Text>
+              </Link>
+            );
+          }}
         />
       </View>
     );
