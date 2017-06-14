@@ -15,13 +15,14 @@ class Notifications extends React.Component {
   componentDidMount () {
     axios.get('http://127.0.0.1:3000/api/invitations')
       .then(({ data }) => {
+        console.log('data ==>>', data)
         invitations = data.map(invite => {
           return {
-            eventId: invite.id,
+            eventId: invite.event_id,
             title: invite.title,
-            inviteId: invite.invitations[0].id,
-            recipientFirstName: invite.recipient.first_name,
-            recipientLastName: invite.recipient.last_name
+            inviteId: invite.id,
+            recipientFirstName: invite.first_name,
+            recipientLastName: invite.last_name
           }});
         this.setState({invites: invitations})
       })
