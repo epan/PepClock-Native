@@ -4,10 +4,12 @@ import {
   Button,
   Clipboard,
   Image,
+  ScrollView,
   Share,
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -16,39 +18,52 @@ import Exponent, {
   ImagePicker,
   registerRootComponent,
 } from 'exponent';
+import ColorButton from 'apsl-react-native-button';
 import axios from 'axios';
-import superagent from 'superagent';
+import styles from '../styles/main';
 
 export default class ContributionForm extends React.Component {
-  state = {
-    image: null,
-    uploading: false,
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null,
+      uploading: false,
+      text: '',
+      eventId: 50,
+      contributionType: 'message'
+    };
   }
 
   render() {
     let { image } = this.state;
 
     return (
-      <View>
+      <ScrollView>
         <Text style={{fontSize: 20, marginBottom: 20, textAlign: 'center', marginHorizontal: 15}}>
-          Example: Upload ImagePicker result
+          Enter your message
         </Text>
 
-        <Button
-          onPress={this._pickImage}
-          title="Pick an image from camera roll"
-        />
-
-        <Button
-          onPress={this._takePhoto}
-          title="Take a photo"
+        <TextInput
+          editable = {true}
+          maxLength = {200}
+          multiline = {true}
+          numberOfLines = {4}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text}
+          style={styles.inputField}
         />
 
         { this._maybeRenderImage() }
         { this._maybeRenderUploadingOverlay() }
+        { this._maybeRenderImageButtons() }
+
+        <ColorButton onPress={this._handleSubmit}>
+          Create Post 
+        </ColorButton>
+
 
         <StatusBar barStyle="default" />
-      </View>
+      </ScrollView>
     );
   }
 
@@ -74,14 +89,9 @@ export default class ContributionForm extends React.Component {
 
     return (
       <View style={{
-        marginTop: 30,
+        marginTop: 5,
         width: 250,
         borderRadius: 3,
-        elevation: 2,
-        shadowColor: 'rgba(0,0,0,1)',
-        shadowOpacity: 0.2,
-        shadowOffset: {width: 4, height: 4},
-        shadowRadius: 5,
       }}>
         <View style={{borderTopRightRadius: 3, borderTopLeftRadius: 3, overflow: 'hidden'}}>
           <Image
@@ -89,28 +99,27 @@ export default class ContributionForm extends React.Component {
             style={{width: 250, height: 250}}
           />
         </View>
-
-        <Text
-          onPress={this._copyToClipboard}
-          onLongPress={this._share}
-          style={{paddingVertical: 10, paddingHorizontal: 10}}>
-          {image}
-        </Text>
       </View>
     );
   }
 
-  _share = () => {
-    Share.share({
-      message: this.state.image,
-      title: 'Check out this photo',
-      url: this.state.image,
-    });
-  }
+  _maybeRenderImageButtons = () => {
+    let { image } = this.state;
+    if (!image) {
+      return (
+        <View>
+          <Button
+            onPress={this._pickImage}
+            title="Pick an image from camera roll"
+          />
 
-  _copyToClipboard = () => {
-    Clipboard.setString(this.state.image);
-    alert('Copied image URL to clipboard');
+          <Button
+            onPress={this._takePhoto}
+            title="Take a photo"
+          />
+        </View>
+      );
+    }
   }
 
   _takePhoto = async () => {
@@ -140,7 +149,7 @@ export default class ContributionForm extends React.Component {
       if (!pickerResult.cancelled) {
         uploadResponse = await uploadImageAsync(pickerResult.uri);
         uploadResult = await uploadResponse.json();
-        this.setState({image: uploadResult.location});
+        this.setState({image: uploadResult.location, contributionType: 'image'});
       }
     } catch(e) {
       console.log({e});
@@ -148,6 +157,29 @@ export default class ContributionForm extends React.Component {
     } finally {
       this.setState({uploading: false});
     }
+  }
+
+  _handleSubmit = () => {
+    axios({
+      method: 'post',
+      url: 'http://127.0.0.1:3000/api/contributions',
+      data: {
+        eventId: this.state.eventId,
+        contributionText: this.state.text,
+        contributionType: this.state.contributionType,
+        contributionMediaUrl: this.state.image
+      }
+    })
+    .then(res => {
+      this.setState({
+        text: '',
+        contributionType: 'message',
+        image: null
+      });
+    })
+    .catch(err => {
+      console.log('Error in ContributionForm Submit', err);
+    });
   }
 }
 

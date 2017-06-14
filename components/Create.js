@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TextInput, Text, View, DatePickerIOS, ScrollView, TouchableOpacity} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TagInput from 'react-native-tag-input';
-import Button from 'apsl-react-native-button'
+import Button from 'apsl-react-native-button';
 import axios from 'axios';
 import styles from '../styles/main';
 
