@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, TextInput, Text, View, DatePickerIOS, ScrollView, TouchableOpacity} from 'react-native';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import TagInput from 'react-native-tag-input';
-import Button from 'apsl-react-native-button';
+import Button from 'apsl-react-native-button'
 import axios from 'axios';
-import styles from '../styles/main';
 
 class Create extends React.Component {
   constructor(props) {
@@ -23,16 +22,18 @@ class Create extends React.Component {
   }
 
   _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
-
+ 
   _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
-
+ 
   _handleDatePicked = (deliveryTime) => {
+    console.log('A date has been picked: ', deliveryTime);
     this.setState({ deliveryTime });
 
     this._hideDateTimePicker();
   };
 
   handleChangeTags(tags) {
+    console.log(tags);
     this.setState({ tags });
   };
 
@@ -46,7 +47,7 @@ class Create extends React.Component {
         lastName: this.state.lastName,
         email: this.state.email,
         deliveryTime: this.state.deliveryTime,
-        inviteEmails: this.state.tags
+        inviteEmails: tags
       }
     }).then(response => {
       this.setState({eventId: response.data.id, redirectToEvent: true});
@@ -70,28 +71,28 @@ class Create extends React.Component {
         </View>
         <View style={{flex: .25}}>
           <Text>Name your event</Text>
-          <TextInput style={styles.inputField}
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             placeholder="e.g. Happy Birthday Lisa!" onChangeText={(eventName) => this.setState({eventName})}
             value={this.state.eventName}>
           </TextInput>
         </View>
         <View style={{flex: .25}}>
           <Text>Recipient's first name</Text>
-          <TextInput style={styles.inputField}
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             placeholder="Lisa" onChangeText={(firstName) => this.setState({firstName})}
             value={this.state.firstName}>
           </TextInput>
         </View>
         <View style={{flex: .25}}>
           <Text>Recipient's last name</Text>
-          <TextInput style={styles.inputField}
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             placeholder="Johnson" onChangeText={(lastName) => this.setState({lastName})}
             value={this.state.lastName}>
           </TextInput>
         </View>
         <View style={{flex: .25}}>
           <Text>Recipient's email</Text>
-          <TextInput style={styles.inputField}
+          <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}}
             placeholder="lisa@gmail.com" onChangeText={(email) => this.setState({email})}
             value={this.state.email}>
           </TextInput>
@@ -107,7 +108,7 @@ class Create extends React.Component {
             mode='datetime'
           />
         </View>
-        <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
+        <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/> 
         <Button onPress={this.handleSubmit.bind(this)} style={{backgroundColor: 'blue'}} textStyle={{color: 'white'}}>Create your event!</Button>
       </ScrollView>
 
@@ -116,4 +117,10 @@ class Create extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  }
+});
 export default Create;
