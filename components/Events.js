@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { Link } from 'react-router-native';
 import axios from 'axios';
+import Notifications from './Notifications';
 
 class Events extends React.Component {
   constructor(props) {

@@ -15,6 +15,7 @@ class Event extends React.Component {
   }
 
   componentDidMount () {
+    console.log(this.props)
     axios.get(`http://127.0.0.1:3000/api/events/${this.props.match.params.id}`)
       .then(({ data }) => {
         this.setState({
@@ -26,6 +27,12 @@ class Event extends React.Component {
       .catch((error) => {
         console.log(error)
       });
+
+    if (this.props.location.search.length) {
+      axios.get('http://127.0.0.1:3000' + this.props.location.pathname + this.props.location.search)
+        .then(() => null)
+      // console.log(this.props.location.pathname + this.props.location.search)
+    }
   }
 
   render() {
