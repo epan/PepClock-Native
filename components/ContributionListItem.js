@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Video } from 'expo';
 import VideoContribution from './VideoContribution';
+import styles from '../styles/main';
 
 class ContributionListItem extends React.Component {
   constructor(props) {
@@ -15,28 +16,28 @@ class ContributionListItem extends React.Component {
   render() {
     if (this.props.contribution.type === 'image') {
       return (
-        <View>
+        <View style={styles.listItem}>
           <Image
             source={{uri: this.props.contribution.media_url}}
             style={{width: 300, height: 300}}
           />
-          <Text>{this.props.contribution.text}</Text>
+          <Text style={styles.listItemLabel}>{this.props.contribution.text}</Text>
         </View>
       );
     }
 
     if (this.props.contribution.type === 'video') {
       return (
-        <View>
+        <View style={styles.listItem}>
           <VideoContribution url={this.props.contribution.media_url} />
-          <Text>{this.props.contribution.text}</Text>
+          <Text style={styles.listItemLabel}>{this.props.contribution.text}</Text>
         </View>
       );
     }
 
     return (
-      <View>
-        <Text>{this.props.contribution.text}</Text>
+      <View style={styles.listItem}>
+        <Text style={styles.listItemLabel}>{this.props.contribution.text}</Text>
       </View>
     );
   }

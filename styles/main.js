@@ -34,6 +34,27 @@ const main = StyleSheet.create({
   topic: {
     textAlign: 'center',
     fontSize: 15
+  },
+  back: {
+    width: 300,
+    height: 200,
+    zIndex: 0
+  },
+  front: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: 50,
+    height: 50,
+    marginLeft: -25,
+    marginTop: -25,
+    zIndex: 1
+  },
+  listItem: {
+    marginBottom: 30
+  },
+  listItemLabel: {
+    marginTop: 3
   }
 });
 
