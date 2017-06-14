@@ -26,6 +26,11 @@ class Event extends React.Component {
       .catch((error) => {
         console.log(error)
       });
+
+    if (this.props.location.search.length) {
+      axios.get('http://127.0.0.1:3000' + this.props.location.pathname + this.props.location.search)
+        .then(() => null)
+    }
   }
 
   render() {
@@ -42,5 +47,3 @@ class Event extends React.Component {
 }
 
 export default Event;
-
-// {this.props.match.params.url}

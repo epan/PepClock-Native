@@ -6,6 +6,7 @@ import Events from './components/Events';
 import Login from './components/Login';
 import Event from './components/Event';
 import Create from './components/Create';
+import Notifications from './components/Notifications';
 
 export default class App extends React.Component {
   render() {
@@ -26,12 +27,17 @@ export default class App extends React.Component {
                 to='/create'
                 style={styles.navItem}>
                   <Text>Create</Text></Link>
+              <Link
+                to='/notifications'
+                style={styles.navItem}>
+                  <Text>Notifications</Text></Link>
             </View>
 
           <Route exact path='/' component={Events}/>
           <Route path='/login' component={Login}/>
           <Route path='/events/:id' component={Event}/>
           <Route path='/create' component={Create}/>
+          <Route path='/notifications' component={Notifications}/>
         </View>
       </NativeRouter>
     );
