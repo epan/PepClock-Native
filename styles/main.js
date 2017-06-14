@@ -37,7 +37,8 @@ const main = StyleSheet.create({
   },
   titleText: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
+  },
   back: {
     width: 300,
     height: 200,
