@@ -35,6 +35,9 @@ const main = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15
   },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   back: {
     width: 300,
     height: 200,
