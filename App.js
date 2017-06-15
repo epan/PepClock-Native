@@ -14,28 +14,15 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-            <Text>Hello PepClock-Native</Text>
             <View style={styles.nav}>
               <Link
                 to='/'
                 style={styles.navItem}>
                   <Text>Events</Text></Link>
               <Link
-                to='/login'
-                style={styles.navItem}>
-                  <Text>Login</Text></Link>
-              <Link
                 to='/create'
                 style={styles.navItem}>
                   <Text>Create</Text></Link>
-              <Link
-                to='/notifications'
-                style={styles.navItem}>
-                  <Text>Notifications</Text></Link>
-              <Link
-                to='/contributionform'
-                style={styles.navItem}>
-                  <Text>ContForm</Text></Link>
             </View>
 
           <Route exact path='/' component={Events}/>
