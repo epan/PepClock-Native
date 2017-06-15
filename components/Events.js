@@ -10,7 +10,8 @@ class Events extends React.Component {
 
     this.state = {
       events: [],
-      isAuthed: true
+      isAuthed: true,
+      invites: []
     };
     this.logout = this.logout.bind(this);
   }
@@ -34,6 +35,19 @@ class Events extends React.Component {
         } 
         console.log(err.response);
       });
+    axios.get('http://127.0.0.1:3000/api/invitations')
+      .then(({ data }) => {
+        invitations = data.map(invite => {
+          return {
+            eventId: invite.event_id,
+            title: invite.title,
+            inviteId: invite.id,
+            recipientFirstName: invite.first_name,
+            recipientLastName: invite.last_name
+          };
+        });
+        this.setState({invites: invitations});
+      });
   }
 
   logout () {
@@ -43,10 +57,19 @@ class Events extends React.Component {
       });
   }
 
+  maybeRenderNotifications () {
+    if (this.state.invites.length) {
+      return (
+        <Notifications invites={this.state.invites} />
+      );
+    }
+  }
+
   render () {
     if (this.state.isAuthed) {
       return (
         <ScrollView>
+          {this.maybeRenderNotifications()}
           <Text>Event List</Text>
           <FlatList
             data={this.state.events}
