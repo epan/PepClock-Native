@@ -12,7 +12,8 @@ class Events extends React.Component {
     this.state = {
       events: [],
       isAuthed: true,
-      invites: []
+      invites: [],
+      deliveries: []
     };
     this.logout = this.logout.bind(this);
   }
@@ -29,25 +30,44 @@ class Events extends React.Component {
           };
         });
         this.setState({events: events});
+
+        axios.get('http://127.0.0.1:3000/api/invitations')
+          .then(({ data }) => {
+            let invitations = data.map(invite => {
+              return {
+                eventId: invite.event_id,
+                title: invite.title,
+                inviteId: invite.id,
+                recipientFirstName: invite.first_name,
+                recipientLastName: invite.last_name
+              };
+            });
+            this.setState({invites: invitations});
+          })
+          .catch((err) => console.log(err));
+
+        axios.get('http://127.0.0.1:3000/api/events/recipient')
+          .then(({ data }) => {
+            let deliveries = data.map(delivery => {
+              return {
+                eventId: delivery.event_id,
+                title: delivery.title,
+                inviteId: delivery.id,
+                recipientFirstName: 'YOU!',
+                recipientLastName: ''
+              }
+            })
+
+            this.setState({deliveries: deliveries});
+          })
+          .catch((err) => console.log(err));
+
       })
       .catch(err => {
         if (err.response.status === 400) {
           this.setState({isAuthed: false});
         }
         console.log(err.response);
-      });
-    axios.get('http://127.0.0.1:3000/api/invitations')
-      .then(({ data }) => {
-        invitations = data.map(invite => {
-          return {
-            eventId: invite.event_id,
-            title: invite.title,
-            inviteId: invite.id,
-            recipientFirstName: invite.first_name,
-            recipientLastName: invite.last_name
-          };
-        });
-        this.setState({invites: invitations});
       });
   }
 
@@ -61,8 +81,24 @@ class Events extends React.Component {
   maybeRenderNotifications () {
     if (this.state.invites.length) {
       return (
-        <Notifications invites={this.state.invites} />
+        <Notifications
+          header={'Contribute To:'}
+          type='invite'
+          invites={this.state.invites}
+        />
       );
+    }
+  }
+
+  maybeRenderDeliveries () {
+    if (this.state.deliveries.length) {
+      return (
+        <Notifications
+          header='YOU HAVE PEP!!'
+          type='recipient'
+          invites={this.state.deliveries}
+        />
+      )
     }
   }
 
@@ -70,7 +106,7 @@ class Events extends React.Component {
     if (this.state.isAuthed) {
       return (
         <ScrollView style={styles.content}>
-          <Text style={styles.titleText}>Event List</Text>
+          {this.maybeRenderDeliveries()}
           {this.maybeRenderNotifications()}
           <Text style={styles.h2}>Events you contribute to</Text>
           <FlatList
