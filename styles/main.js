@@ -94,11 +94,6 @@ const main = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontWeight: 'bold'
-  },
-  separator: {
-    height: 2,
-    backgroundColor: 'red',
-    width: 100
   }
 });
 
