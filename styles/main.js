@@ -9,7 +9,8 @@ const main = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     marginBottom: 15,
-    width: 300
+    width: 300,
+    borderRadius: 0
   },
   inputFieldTag: {
     paddingTop: 0,
@@ -52,6 +53,11 @@ const main = StyleSheet.create({
     lineHeight: 26,
     color: '#333'
   },
+  dateText: {
+    fontSize: 17,
+    lineHeight: 26,
+    textAlign: 'left'
+  },
   back: {
     width: 300,
     height: 200,
@@ -77,7 +83,7 @@ const main = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: '#3FD17F',
     borderWidth: 3,
-    borderColor: '#38B46E'
+    borderColor: '#38B46E',
   },
   buttonText: {
     color: '#fff',

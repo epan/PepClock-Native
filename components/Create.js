@@ -98,7 +98,7 @@ class Create extends React.Component {
         </View>
         <View>
           <Text style={styles.baseText}>Delivery time</Text>
-          <Button onPress={this._showDateTimePicker}>
+          <Button style={styles.inputField} textStyle={[styles.baseText, styles.dateText]} onPress={this._showDateTimePicker}>
             {`${this.state.deliveryTime.toLocaleDateString()} ${this.state.deliveryTime.toLocaleTimeString()}`}
           </Button>
           <DateTimePicker
@@ -108,7 +108,7 @@ class Create extends React.Component {
             mode='datetime'
           />
         </View>
-        <Text style={styles.baseText}>Collaborator emails</Text>
+        <Text style={styles.baseText}>Invite collaborators</Text>
         <View style={[styles.inputField, styles.inputFieldTag]}>
           <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
         </View>
