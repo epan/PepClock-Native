@@ -76,7 +76,15 @@ class Events extends React.Component {
           <FlatList
             data={this.state.events}
             keyExtractor={item => item.id}
-            renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title} FOR {item.firstName} {item.lastName}</Text></Link>}
+            renderItem={({item}) => (
+              <Link to={`events/${item.id}`}>
+                <View style={{height: 44}}>
+                  <Text style={styles.baseText}>
+                    {item.title} for {item.firstName} {item.lastName}
+                  </Text>
+                </View>
+              </Link>
+            )}
           />
           <Button
             onPress={this.logout}
