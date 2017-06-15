@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text, View } from 'react-native';
-import { Link } from 'react-router-native';
+import { StyleSheet, FlatList, Text, View, Button, ScrollView } from 'react-native';
+import { Link, Redirect } from 'react-router-native';
 import axios from 'axios';
 import Notifications from './Notifications';
 
@@ -9,8 +9,10 @@ class Events extends React.Component {
     super(props);
 
     this.state = {
-      events: []
+      events: [],
+      isAuthed: true
     };
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount () {
@@ -26,20 +28,42 @@ class Events extends React.Component {
         });
         this.setState({events: events});
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.response.status === 400) {
+          this.setState({isAuthed: false});
+        } 
+        console.log(err.response);
+      });
+  }
+
+  logout () {
+    axios.get('http://127.0.0.1:3000/logout')
+      .then(response => {
+        this.setState({isAuthed: false});
+      });
   }
 
   render () {
-    return (
-      <View>
-        <Text>Event List</Text>
-        <FlatList
-          data={this.state.events}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title} FOR {item.firstName} {item.lastName}</Text></Link>}
-        />
-      </View>
-    );
+    if (this.state.isAuthed) {
+      return (
+        <ScrollView>
+          <Text>Event List</Text>
+          <FlatList
+            data={this.state.events}
+            keyExtractor={item => item.id}
+            renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title} FOR {item.firstName} {item.lastName}</Text></Link>}
+          />
+          <Button
+            onPress={this.logout}
+            title='Log out'
+          />
+        </ScrollView>
+      );
+    } else {
+      return (
+        <Redirect to="/login" />
+      );
+    }
   }
 }
 

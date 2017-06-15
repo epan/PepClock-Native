@@ -16,7 +16,6 @@ class Login extends React.Component {
     };
 
     this.submitLogin = this.submitLogin.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   submitLogin () {
@@ -33,13 +32,6 @@ class Login extends React.Component {
     .catch(err => {
       console.log(err);
     });
-  }
-
-  logout () {
-    axios.get('http://127.0.0.1:3000/logout')
-      .then(response => {
-        this.setState({failMessage: 'logged out'});
-      });
   }
 
   render() {
@@ -69,10 +61,6 @@ class Login extends React.Component {
         <Button
           onPress={this.submitLogin}
           title='Log in'
-        />
-        <Button
-          onPress={this.logout}
-          title='Log out'
         />
       </View>
     );
