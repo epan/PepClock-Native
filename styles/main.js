@@ -6,7 +6,7 @@ const main = StyleSheet.create({
   inputField: {
     padding: 10,
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 15,
     width: 300,
@@ -49,9 +49,9 @@ const main = StyleSheet.create({
     marginBottom: 10
   },
   h2: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    lineHeight: 42,
+    lineHeight: 30,
     marginBottom: 6
   },
   baseText: {
@@ -94,6 +94,10 @@ const main = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontWeight: 'bold'
+  },
+  separator: {
+    height: 2,
+    backgroundColor: 'red'
   }
 });
 
