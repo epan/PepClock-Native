@@ -66,6 +66,16 @@ const main = StyleSheet.create({
   },
   listItemLabel: {
     marginTop: 3
+  },
+  button: {
+    borderRadius: 100,
+    backgroundColor: '#3FD17F',
+    borderWidth: 3,
+    borderColor: '#38B46E'
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold'
   }
 });
 
