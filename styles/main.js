@@ -80,10 +80,19 @@ const main = StyleSheet.create({
     zIndex: 1
   },
   listItem: {
-    marginBottom: 30
+    marginBottom: 30,
+    padding: 10,
+    backgroundColor: '#f7f7f7',
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: '#ccc'
   },
   listItemLabel: {
-    marginTop: 3
+    marginTop: 3,
+    fontWeight: '500'
+  },
+  itemAuthor: {
+    fontStyle: 'italic'
   },
   button: {
     borderRadius: 100,

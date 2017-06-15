@@ -17,7 +17,7 @@ class ContributionList extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{ marginTop: 20 }}>
         <FlatList
           data={this.props.contributions}
           keyExtractor={item => item.id}

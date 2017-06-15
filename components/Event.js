@@ -49,7 +49,9 @@ class Event extends React.Component {
     return (
       <ScrollView>
         <Text style={styles.titleText}>{this.state.title}</Text>
-        <Text style={styles.h2}>A PepClock lovingly created for {this.state.recipientFirstName} {this.state.recipientLastName}</Text>
+        <Text style={styles.h2}>
+          A PepClock lovingly created for {this.state.recipientFirstName} {this.state.recipientLastName}
+        </Text>
         <ContributionList
           eventId={this.props.match.params.id}
           contributions={this.state.contributions}
