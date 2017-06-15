@@ -11,6 +11,12 @@ const main = StyleSheet.create({
     marginBottom: 15,
     width: 300
   },
+  inputFieldTag: {
+    paddingTop: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+    paddingLeft: 10,
+  },
   container: {
     marginTop: 25,
     padding: 10,

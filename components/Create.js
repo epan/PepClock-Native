@@ -108,7 +108,10 @@ class Create extends React.Component {
             mode='datetime'
           />
         </View>
-        <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
+        <Text style={styles.baseText}>Collaborator emails</Text>
+        <View style={[styles.inputField, styles.inputFieldTag]}>
+          <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
+        </View>
         <Button onPress={this.handleSubmit.bind(this)} style={styles.button} textStyle={styles.buttonText}>Create your event</Button>
       </ScrollView>
 
