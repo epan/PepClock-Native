@@ -45,8 +45,14 @@ const main = StyleSheet.create({
   titleText: {
     fontSize: 24,
     fontWeight: 'bold',
-    lineHeight: 42,
+    lineHeight: 34,
     marginBottom: 10
+  },
+  h2: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    lineHeight: 42,
+    marginBottom: 6
   },
   baseText: {
     fontSize: 16,

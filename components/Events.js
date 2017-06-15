@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, Text, View, Button, ScrollView } from 'react-nati
 import { Link, Redirect } from 'react-router-native';
 import axios from 'axios';
 import Notifications from './Notifications';
+import styles from '../styles/main';
 
 class Events extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Events extends React.Component {
       .catch(err => {
         if (err.response.status === 400) {
           this.setState({isAuthed: false});
-        } 
+        }
         console.log(err.response);
       });
     axios.get('http://127.0.0.1:3000/api/invitations')
@@ -69,8 +70,9 @@ class Events extends React.Component {
     if (this.state.isAuthed) {
       return (
         <ScrollView>
+          <Text style={styles.titleText}>Event List</Text>
           {this.maybeRenderNotifications()}
-          <Text>Event List</Text>
+          <Text style={styles.h2}>Events you contribute to</Text>
           <FlatList
             data={this.state.events}
             keyExtractor={item => item.id}

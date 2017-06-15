@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, FlatList, Text, View } from 'react-native';
 import { Link } from 'react-router-native';
 import axios from 'axios';
+import styles from '../styles/main';
 
 class Notifications extends React.Component {
   constructor (props) {
@@ -13,7 +14,7 @@ class Notifications extends React.Component {
   render () {
     return (
       <View>
-        <Text>Notifications</Text>
+        <Text style={styles.h2}>Notifications</Text>
         <FlatList
           data={this.props.invites}
           keyExtractor={item => item.inviteId}
