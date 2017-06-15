@@ -29,7 +29,6 @@ export default class ContributionForm extends React.Component {
       image: null,
       uploading: false,
       text: '',
-      eventId: 50,
       contributionType: 'message'
     };
   }
@@ -164,7 +163,7 @@ export default class ContributionForm extends React.Component {
       method: 'post',
       url: 'http://127.0.0.1:3000/api/contributions',
       data: {
-        eventId: this.state.eventId,
+        eventId: this.props.eventId,
         contributionText: this.state.text,
         contributionType: this.state.contributionType,
         contributionMediaUrl: this.state.image
@@ -176,6 +175,7 @@ export default class ContributionForm extends React.Component {
         contributionType: 'message',
         image: null
       });
+      this.props.getContributions();
     })
     .catch(err => {
       console.log('Error in ContributionForm Submit', err);

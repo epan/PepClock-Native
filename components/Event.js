@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
 import ContributionList from './ContributionList';
+import ContributionForm from './ContributionForm';
 
 class Event extends React.Component {
   constructor(props) {
@@ -10,8 +11,10 @@ class Event extends React.Component {
     this.state = {
       title: '',
       recipientFirstName: '',
-      recipientLastName: ''
-    }
+      recipientLastName: '',
+      contributions: []
+    };
+    this.getContributions = this.getContributions.bind(this);
   }
 
   componentDidMount () {
@@ -21,27 +24,40 @@ class Event extends React.Component {
           title: data.title,
           recipientFirstName: data.recipient.first_name,
           recipientLastName: data.recipient.last_name
-        })
+        });
       })
+      .then(() => { this.getContributions(); })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
 
     if (this.props.location.search.length) {
       axios.get('http://127.0.0.1:3000' + this.props.location.pathname + this.props.location.search)
-        .then(() => null)
+        .then(() => null);
     }
+  }
+
+  getContributions() {
+    axios.get(`http://127.0.0.1:3000/api/contributions/events/${this.props.match.params.id}`)
+      .then(({ data }) => {
+        this.setState({contributions: data});
+      });
   }
 
   render() {
     return (
-      <View>
+      <ScrollView>
         <Text>{this.state.title}</Text>
         <Text>A PepClock Lovingly Created for {this.state.recipientFirstName} {this.state.recipientLastName} </Text>
         <ContributionList
           eventId={this.props.match.params.id}
+          contributions={this.state.contributions}
         />
-      </View>
+        <ContributionForm 
+          eventId={this.props.match.params.id}
+          getContributions={this.getContributions} 
+        />
+      </ScrollView>
     );
   }
 }
