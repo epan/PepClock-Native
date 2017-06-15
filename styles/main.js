@@ -8,7 +8,7 @@ const main = StyleSheet.create({
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
-    marginBottom: 20,
+    marginBottom: 15,
     width: 300
   },
   container: {
@@ -36,8 +36,15 @@ const main = StyleSheet.create({
     fontSize: 15
   },
   titleText: {
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: 'bold',
+    lineHeight: 42,
+    marginBottom: 10
+  },
+  baseText: {
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#333'
   },
   back: {
     width: 300,
