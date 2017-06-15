@@ -51,7 +51,7 @@ const main = StyleSheet.create({
   h2: {
     fontSize: 18,
     fontWeight: 'bold',
-    lineHeight: 30,
+    lineHeight: 24,
     marginBottom: 6
   },
   baseText: {
@@ -97,7 +97,8 @@ const main = StyleSheet.create({
   },
   separator: {
     height: 2,
-    backgroundColor: 'red'
+    backgroundColor: 'red',
+    width: 100
   }
 });
 

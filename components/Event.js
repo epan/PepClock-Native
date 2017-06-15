@@ -3,6 +3,7 @@ import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
 import ContributionList from './ContributionList';
 import ContributionForm from './ContributionForm';
+import styles from '../styles/main';
 
 class Event extends React.Component {
   constructor(props) {
@@ -47,15 +48,15 @@ class Event extends React.Component {
   render() {
     return (
       <ScrollView>
-        <Text>{this.state.title}</Text>
-        <Text>A PepClock Lovingly Created for {this.state.recipientFirstName} {this.state.recipientLastName} </Text>
+        <Text style={styles.titleText}>{this.state.title}</Text>
+        <Text style={styles.h2}>A PepClock lovingly created for {this.state.recipientFirstName} {this.state.recipientLastName}</Text>
         <ContributionList
           eventId={this.props.match.params.id}
           contributions={this.state.contributions}
         />
-        <ContributionForm 
+        <ContributionForm
           eventId={this.props.match.params.id}
-          getContributions={this.getContributions} 
+          getContributions={this.getContributions}
         />
       </ScrollView>
     );
