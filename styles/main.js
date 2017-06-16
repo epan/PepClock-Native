@@ -22,8 +22,7 @@ const main = StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 20,
     paddingLeft: 20,
-    alignItems: 'center',
-    // backgroundColor: 'grey'
+    alignItems: 'center'
   },
   header: {
     fontSize: 20
@@ -36,7 +35,6 @@ const main = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingTop: 25,
-    // paddingBottom: 5,
     backgroundColor: colors.brand,
     alignItems: 'center'
   },
@@ -106,7 +104,7 @@ const main = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: colors.brand,
     borderWidth: 3,
-    borderColor: colors.brandDark,
+    borderColor: colors.brandDark
   },
   buttonText: {
     color: '#fff',
