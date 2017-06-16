@@ -40,7 +40,7 @@ class Login extends React.Component {
     }
 
     return (
-      <View>
+      <View style={styles.content}>
         <Text>{this.state.failMessage}</Text>
         <Text>Username</Text>
         <TextInput
