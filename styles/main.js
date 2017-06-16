@@ -6,38 +6,71 @@ const main = StyleSheet.create({
   inputField: {
     padding: 10,
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#ccc',
     borderWidth: 1,
-    marginBottom: 20,
-    width: 300
+    marginBottom: 15,
+    width: '100%',
+    borderRadius: 0
+  },
+  inputFieldTag: {
+    paddingTop: 0,
+    paddingRight: 0,
+    paddingBottom: 0,
+    paddingLeft: 10,
   },
   container: {
-    marginTop: 25,
-    padding: 10,
-    alignItems: 'center'
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
+    alignItems: 'center',
+    // backgroundColor: 'grey'
   },
   header: {
     fontSize: 20
   },
+  content: {
+    paddingTop: 20,
+    width: '100%'
+  },
   nav: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'center',
+    paddingTop: 25,
+    // paddingBottom: 5,
+    backgroundColor: colors.brand,
+    alignItems: 'center'
   },
   navItem: {
     flex: 1,
     alignItems: 'center',
-    padding: 10,
-  },
-  subNavItem: {
-    padding: 5
+    justifyContent: 'center',
+    height: 44,
   },
   topic: {
     textAlign: 'center',
     fontSize: 15
   },
   titleText: {
-    fontSize: 20,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: 'bold',
+    lineHeight: 34,
+    marginBottom: 10
+  },
+  h2: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    lineHeight: 24,
+    marginBottom: 6
+  },
+  baseText: {
+    fontSize: 16,
+    lineHeight: 26,
+    color: '#333'
+  },
+  dateText: {
+    fontSize: 17,
+    lineHeight: 26,
+    textAlign: 'left'
   },
   back: {
     width: 300,
@@ -55,10 +88,29 @@ const main = StyleSheet.create({
     zIndex: 1
   },
   listItem: {
-    marginBottom: 30
+    marginBottom: 30,
+    padding: 10,
+    backgroundColor: '#f7f7f7',
+    borderWidth: 1,
+    borderRadius: 4,
+    borderColor: '#ccc'
   },
   listItemLabel: {
-    marginTop: 3
+    marginTop: 3,
+    fontWeight: '500'
+  },
+  itemAuthor: {
+    fontStyle: 'italic'
+  },
+  button: {
+    borderRadius: 100,
+    backgroundColor: colors.brand,
+    borderWidth: 3,
+    borderColor: colors.brandDark,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold'
   }
 });
 

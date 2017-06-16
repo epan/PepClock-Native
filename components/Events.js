@@ -3,6 +3,7 @@ import { StyleSheet, FlatList, Text, View, Button, ScrollView } from 'react-nati
 import { Link, Redirect } from 'react-router-native';
 import axios from 'axios';
 import Notifications from './Notifications';
+import styles from '../styles/main';
 
 class Events extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Events extends React.Component {
       .catch(err => {
         if (err.response.status === 400) {
           this.setState({isAuthed: false});
-        } 
+        }
         console.log(err.response);
       });
     axios.get('http://127.0.0.1:3000/api/invitations')
@@ -68,13 +69,22 @@ class Events extends React.Component {
   render () {
     if (this.state.isAuthed) {
       return (
-        <ScrollView>
+        <ScrollView style={styles.content}>
+          <Text style={styles.titleText}>Event List</Text>
           {this.maybeRenderNotifications()}
-          <Text>Event List</Text>
+          <Text style={styles.h2}>Events you contribute to</Text>
           <FlatList
             data={this.state.events}
             keyExtractor={item => item.id}
-            renderItem={({item}) => <Link to={`events/${item.id}`}><Text>{item.title} FOR {item.firstName} {item.lastName}</Text></Link>}
+            renderItem={({item}) => (
+              <Link to={`events/${item.id}`}>
+                <View style={{height: 44}}>
+                  <Text style={styles.baseText}>
+                    {item.title} for {item.firstName} {item.lastName}
+                  </Text>
+                </View>
+              </Link>
+            )}
           />
           <Button
             onPress={this.logout}

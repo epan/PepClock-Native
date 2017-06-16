@@ -1,7 +1,8 @@
-export default {
+module.exports = {
   colors: {
     joshIvory: '#fffff0 ',
-    red: '#ff4500'
+    brand: '#3FD17F',
+    brandDark: '#38B46E'
   },
   spacing: {
     sm: 10,
