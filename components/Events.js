@@ -82,7 +82,7 @@ class Events extends React.Component {
     if (this.state.invites.length) {
       return (
         <Notifications
-          header={'Contribute To:'}
+          header='Contribute To:'
           type='invite'
           invites={this.state.invites}
         />
