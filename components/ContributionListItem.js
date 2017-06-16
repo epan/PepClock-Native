@@ -14,7 +14,8 @@ class ContributionListItem extends React.Component {
   }
 
   render() {
-    const { text, type, media_url: uri, user: { first, last } } = this.props.contribution;
+    const { text, type, media_url: uri, user: { first } } = this.props.contribution;
+    const last = this.props.contribution.last || '';
 
     if (type === 'image') {
       return (
