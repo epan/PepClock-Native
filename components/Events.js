@@ -57,8 +57,8 @@ class Events extends React.Component {
                   inviteId: delivery.id,
                   recipientFirstName: 'YOU!',
                   recipientLastName: ''
-                }
-              })
+                };
+              });
 
               this.setState({deliveries: deliveries});
 
@@ -86,7 +86,7 @@ class Events extends React.Component {
     if (this.state.invites.length) {
       return (
         <Notifications
-          header='Contribute To:'
+          header={'YOU\'RE INVITED TO CONTRIBUTE'}
           type='invite'
           invites={this.state.invites}
         />
@@ -98,11 +98,11 @@ class Events extends React.Component {
     if (this.state.deliveries.length) {
       return (
         <Notifications
-          header='YOU HAVE PEP!!'
+          header='YOU HAVE PEP'
           type='recipient'
           invites={this.state.deliveries}
         />
-      )
+      );
     }
   }
 
@@ -113,15 +113,16 @@ class Events extends React.Component {
           <Text style={styles.titleText}>Event List</Text>
           {this.maybeRenderDeliveries()}
           {this.maybeRenderNotifications()}
-          <Text style={styles.h2}>Events you contribute to</Text>
+          <Text style={styles.h2}>EVENTS YOU CONTRIBUTE TO</Text>
           <FlatList
+            style={styles.eventList}
             data={this.state.events}
             keyExtractor={item => item.id}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
               <Link to={`events/${item.id}`}>
-                <View style={{height: 44}}>
+                <View style={styles.eventListItem}>
                   <Text style={styles.baseText}>
-                    {item.title} for {item.firstName} {item.lastName}
+                    <Text style={{ fontWeight: '600' }}>{item.title}</Text> &rarr; {item.firstName} {item.lastName}
                   </Text>
                 </View>
               </Link>

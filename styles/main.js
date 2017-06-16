@@ -29,7 +29,8 @@ const main = StyleSheet.create({
   },
   content: {
     paddingTop: 20,
-    width: '100%'
+    width: '100%',
+    height: '100%'
   },
   nav: {
     flexDirection: 'row',
@@ -44,21 +45,29 @@ const main = StyleSheet.create({
     justifyContent: 'center',
     height: 44,
   },
+  eventList: {
+    marginBottom: 20,
+  },
+  eventListItem: {
+    flex: 1,
+    justifyContent: 'center',
+    height: 44,
+  },
   topic: {
     textAlign: 'center',
     fontSize: 15
   },
   titleText: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     lineHeight: 34,
     marginBottom: 10
   },
   h2: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
-    lineHeight: 24,
-    marginBottom: 6
+    lineHeight: 20,
+    color: '#333'
   },
   baseText: {
     fontSize: 16,
