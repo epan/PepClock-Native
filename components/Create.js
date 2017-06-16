@@ -5,6 +5,7 @@ import TagInput from 'react-native-tag-input';
 import Button from 'apsl-react-native-button';
 import axios from 'axios';
 import styles from '../styles/main';
+import { Redirect } from 'react-router-native';
 
 class Create extends React.Component {
   constructor(props) {
@@ -49,8 +50,7 @@ class Create extends React.Component {
         inviteEmails: this.state.tags
       }
     }).then(response => {
-      this.setState({eventId: response.data.id, redirectToEvent: true});
-      console.log("Success!");
+      this.setState({eventId: response.data.id});
     }).catch(error => {
       console.log(error);
     });
@@ -63,6 +63,11 @@ class Create extends React.Component {
       placeholder: 'invite emails',
       autoFocus: false,
     };
+
+    if (this.state.eventId) {
+      return <Redirect to={`/events/${this.state.eventId}`}/>; 
+    }
+    
     return (
       <ScrollView style={styles.content}>
         <View>
