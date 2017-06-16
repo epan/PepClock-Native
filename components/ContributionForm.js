@@ -161,7 +161,7 @@ export default class ContributionForm extends React.Component {
   _handleSubmit = () => {
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:3000/api/contributions',
+      url: 'http://www.pepclockapp.com/api/contributions',
       data: {
         eventId: this.props.eventId,
         contributionText: this.state.text,
@@ -184,7 +184,7 @@ export default class ContributionForm extends React.Component {
 }
 
 async function uploadImageAsync(uri) {
-  let apiUrl = 'http://127.0.0.1:3000/api/uploads';
+  let apiUrl = 'http://www.pepclockapp.com/api/uploads';
   console.log('uploadImageAsync was called');
 
 

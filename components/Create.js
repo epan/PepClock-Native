@@ -40,7 +40,7 @@ class Create extends React.Component {
   handleSubmit() {
     axios({
       method: 'post',
-      url: 'http://127.0.0.1:3000/api/events',
+      url: 'http://www.pepclockapp.com/api/events',
       data: {
         eventName: this.state.eventName,
         firstName: this.state.firstName,

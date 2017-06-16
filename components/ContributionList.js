@@ -9,7 +9,7 @@ class ContributionList extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://127.0.0.1:3000/api/contributions/events/${this.props.eventId}`)
+    axios.get(`http://www.pepclockapp.com/api/contributions/events/${this.props.eventId}`)
       .then(({ data }) => {
         this.setState({contributions: data});
       });
