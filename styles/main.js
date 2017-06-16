@@ -46,12 +46,15 @@ const main = StyleSheet.create({
     height: 44,
   },
   eventList: {
-    marginBottom: 20,
+    marginBottom: 30,
   },
   eventListItem: {
     flex: 1,
-    justifyContent: 'center',
-    height: 44,
+    justifyContent: 'center'
+  },
+  eventTitle: {
+    paddingTop: 8,
+    paddingBottom: 8
   },
   topic: {
     textAlign: 'center',
@@ -64,9 +67,9 @@ const main = StyleSheet.create({
     marginBottom: 10
   },
   h2: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    lineHeight: 20,
+    lineHeight: 24,
     color: '#333'
   },
   baseText: {
