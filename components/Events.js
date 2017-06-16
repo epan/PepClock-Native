@@ -69,7 +69,7 @@ class Events extends React.Component {
   render () {
     if (this.state.isAuthed) {
       return (
-        <ScrollView>
+        <ScrollView style={styles.content}>
           <Text style={styles.titleText}>Event List</Text>
           {this.maybeRenderNotifications()}
           <Text style={styles.h2}>Events you contribute to</Text>

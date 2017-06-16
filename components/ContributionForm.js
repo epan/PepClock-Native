@@ -38,7 +38,7 @@ export default class ContributionForm extends React.Component {
 
     return (
       <ScrollView>
-        <Text style={{fontSize: 20, marginBottom: 20, textAlign: 'center', marginHorizontal: 15}}>
+        <Text style={styles.baseText}>
           Enter your message
         </Text>
 
@@ -56,8 +56,8 @@ export default class ContributionForm extends React.Component {
         { this._maybeRenderUploadingOverlay() }
         { this._maybeRenderImageButtons() }
 
-        <ColorButton onPress={this._handleSubmit}>
-          Create Post 
+        <ColorButton style={styles.button} textStyle={styles.buttonText} onPress={this._handleSubmit}>
+          Create Post
         </ColorButton>
 
 

@@ -9,7 +9,7 @@ const main = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 15,
-    width: 300,
+    width: '100%',
     borderRadius: 0
   },
   inputFieldTag: {
@@ -19,16 +19,22 @@ const main = StyleSheet.create({
     paddingLeft: 10,
   },
   container: {
-    marginTop: 25,
-    padding: 10,
-    alignItems: 'center'
+    marginTop: 0,
+    padding: 20,
+    alignItems: 'center',
+    // backgroundColor: 'grey'
   },
   header: {
     fontSize: 20
   },
+  content: {
+    width: '100%'
+  },
   nav: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginBottom: 10,
+    // backgroundColor: colors.brand
   },
   navItem: {
     flex: 1,
@@ -96,9 +102,9 @@ const main = StyleSheet.create({
   },
   button: {
     borderRadius: 100,
-    backgroundColor: '#3FD17F',
+    backgroundColor: colors.brand,
     borderWidth: 3,
-    borderColor: '#38B46E',
+    borderColor: colors.brandDark,
   },
   buttonText: {
     color: '#fff',

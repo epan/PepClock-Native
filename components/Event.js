@@ -47,7 +47,7 @@ class Event extends React.Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.content}>
         <Text style={styles.titleText}>{this.state.title}</Text>
         <Text style={styles.h2}>
           A PepClock lovingly created for {this.state.recipientFirstName} {this.state.recipientLastName}

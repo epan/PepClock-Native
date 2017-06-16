@@ -64,7 +64,7 @@ class Create extends React.Component {
       autoFocus: false,
     };
     return (
-      <ScrollView>
+      <ScrollView style={styles.content}>
         <View>
           <Text style={styles.titleText}>Create a new PepClock</Text>
         </View>
