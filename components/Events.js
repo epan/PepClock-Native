@@ -19,49 +19,53 @@ class Events extends React.Component {
   }
 
   componentDidMount () {
-    axios.get('http://127.0.0.1:3000/api/events/users')
-      .then(({ data }) => {
-        let events = data.map((event) => {
-          return {
-            id: event.event_id,
-            title: event.title,
-            firstName: event.first_name,
-            lastName: event.last_name
-          };
-        });
-        this.setState({events: events});
+    axios.get('http://www.pepclockapp.com/api/events/users')
+      .then(response => {
+        if (response.status === 200) {
+          let data = response.data;
+          let events = data.map((event) => {
+            return {
+              id: event.event_id,
+              title: event.title,
+              firstName: event.first_name,
+              lastName: event.last_name
+            };
+          });
+          this.setState({events: events});
 
-        axios.get('http://127.0.0.1:3000/api/invitations')
-          .then(({ data }) => {
-            let invitations = data.map(invite => {
-              return {
-                eventId: invite.event_id,
-                title: invite.title,
-                inviteId: invite.id,
-                recipientFirstName: invite.first_name,
-                recipientLastName: invite.last_name
-              };
-            });
-            this.setState({invites: invitations});
-          })
-          .catch((err) => console.log(err));
-
-        axios.get('http://127.0.0.1:3000/api/events/recipient')
-          .then(({ data }) => {
-            let deliveries = data.map(delivery => {
-              return {
-                eventId: delivery.event_id,
-                title: delivery.title,
-                inviteId: delivery.id,
-                recipientFirstName: 'YOU!',
-                recipientLastName: ''
-              }
+          axios.get('http://www.pepclockapp.com/api/invitations')
+            .then(({ data }) => {
+              let invitations = data.map(invite => {
+                return {
+                  eventId: invite.event_id,
+                  title: invite.title,
+                  inviteId: invite.id,
+                  recipientFirstName: invite.first_name,
+                  recipientLastName: invite.last_name
+                };
+              });
+              this.setState({invites: invitations});
             })
+            .catch((err) => console.log(err));
 
-            this.setState({deliveries: deliveries});
-          })
-          .catch((err) => console.log(err));
+          axios.get('http://www.pepclockapp.com/api/events/recipient')
+            .then(({ data }) => {
+              let deliveries = data.map(delivery => {
+                return {
+                  eventId: delivery.event_id,
+                  title: delivery.title,
+                  inviteId: delivery.id,
+                  recipientFirstName: 'YOU!',
+                  recipientLastName: ''
+                }
+              })
 
+              this.setState({deliveries: deliveries});
+
+            })
+            .catch((err) => console.log(err));
+        }
+        return null;
       })
       .catch(err => {
         if (err.response.status === 400) {
@@ -72,7 +76,7 @@ class Events extends React.Component {
   }
 
   logout () {
-    axios.get('http://127.0.0.1:3000/logout')
+    axios.get('http://www.pepclockapp.com/logout')
       .then(response => {
         this.setState({isAuthed: false});
       });

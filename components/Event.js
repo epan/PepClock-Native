@@ -19,7 +19,7 @@ class Event extends React.Component {
   }
 
   componentDidMount () {
-    axios.get(`http://127.0.0.1:3000/api/events/${this.props.match.params.id}`)
+    axios.get(`http://www.pepclockapp.com/api/events/${this.props.match.params.id}`)
       .then(({ data }) => {
         this.setState({
           title: data.title,
@@ -33,13 +33,13 @@ class Event extends React.Component {
       });
 
     if (this.props.location.search.length) {
-      axios.get('http://127.0.0.1:3000' + this.props.location.pathname + this.props.location.search)
+      axios.get('http://www.pepclockapp.com' + this.props.location.pathname + this.props.location.search)
         .then(() => null);
     }
   }
 
   getContributions() {
-    axios.get(`http://127.0.0.1:3000/api/contributions/events/${this.props.match.params.id}`)
+    axios.get(`http://www.pepclockapp.com/api/contributions/events/${this.props.match.params.id}`)
       .then(({ data }) => {
         this.setState({contributions: data});
       });

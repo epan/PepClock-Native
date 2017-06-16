@@ -19,7 +19,7 @@ class Login extends React.Component {
   }
 
   submitLogin () {
-    axios.post('http://127.0.0.1:3000/api/mobile/login', {
+    axios.post('http://www.pepclockapp.com/api/mobile/login', {
       email: this.state.email.trim(),
       password: this.state.password
     }).then(({ data: authed }) => {
