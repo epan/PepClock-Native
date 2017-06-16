@@ -15,12 +15,18 @@ class Notifications extends React.Component {
       <View>
         <Text style={styles.h2}>{this.props.header}</Text>
         <FlatList
+          style={styles.eventList}
           data={this.props.invites}
           keyExtractor={item => item.inviteId}
-          renderItem={({item}) => {
+          renderItem={({ item }) => {
+            const inviteUrl = `events/${item.eventId}?${this.props.type}=${item.inviteId}`;
             return (
-              <Link to={`events/${item.eventId}?${this.props.type}=${item.inviteId}`}>
-                <Text>{item.title} FOR {item.recipientFirstName} {item.recipientLastName}</Text>
+                <Link to={inviteUrl}>
+                  <View style={styles.eventListItem}>
+                  <Text style={styles.baseText}>
+                     <Text style={{ fontWeight: '600' }}>{item.title}</Text> &rarr; {item.recipientFirstName} {item.recipientLastName}
+                  </Text>
+                </View>
               </Link>
             );
           }}

@@ -65,43 +65,38 @@ class Create extends React.Component {
     };
 
     if (this.state.eventId) {
-      return <Redirect to={`/events/${this.state.eventId}`}/>; 
+      return <Redirect to={`/events/${this.state.eventId}`}/>;
     }
-    
+
     return (
-      <ScrollView style={styles.content}>
-        <View>
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <View style={styles.marginBottom}>
           <Text style={styles.titleText}>Create a new PepClock</Text>
-        </View>
-        <View>
+
           <Text style={styles.baseText}>Name your event</Text>
           <TextInput style={styles.inputField}
             placeholder="e.g. Happy Birthday Lisa!" onChangeText={(eventName) => this.setState({eventName})}
             value={this.state.eventName}>
           </TextInput>
-        </View>
-        <View>
+
           <Text style={styles.baseText}>Recipient's first name</Text>
           <TextInput style={styles.inputField}
             placeholder="Lisa" onChangeText={(firstName) => this.setState({firstName})}
             value={this.state.firstName}>
           </TextInput>
-        </View>
-        <View>
+
           <Text style={styles.baseText}>Recipient's last name</Text>
           <TextInput style={styles.inputField}
             placeholder="Johnson" onChangeText={(lastName) => this.setState({lastName})}
             value={this.state.lastName}>
           </TextInput>
-        </View>
-        <View>
+
           <Text style={styles.baseText}>Recipient's email</Text>
           <TextInput style={styles.inputField}
             placeholder="lisa@gmail.com" onChangeText={(email) => this.setState({email})}
             value={this.state.email}>
           </TextInput>
-        </View>
-        <View>
+
           <Text style={styles.baseText}>Delivery time</Text>
           <Button style={styles.inputField} textStyle={[styles.baseText, styles.dateText]} onPress={this._showDateTimePicker}>
             {`${this.state.deliveryTime.toLocaleDateString()} ${this.state.deliveryTime.toLocaleTimeString()}`}
@@ -112,12 +107,14 @@ class Create extends React.Component {
             onCancel={this._hideDateTimePicker}
             mode='datetime'
           />
+
+          <Text style={styles.baseText}>Invite collaborators</Text>
+          <View style={[styles.inputField, styles.inputFieldTag]}>
+            <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
+          </View>
+
+          <Button onPress={this.handleSubmit.bind(this)} style={styles.button} textStyle={styles.buttonText}>Create your event</Button>
         </View>
-        <Text style={styles.baseText}>Invite collaborators</Text>
-        <View style={[styles.inputField, styles.inputFieldTag]}>
-          <TagInput value={this.state.tags} onChange={this.handleChangeTags.bind(this)} inputProps={inputProps}/>
-        </View>
-        <Button onPress={this.handleSubmit.bind(this)} style={styles.button} textStyle={styles.buttonText}>Create your event</Button>
       </ScrollView>
 
 
