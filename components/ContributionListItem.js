@@ -22,7 +22,7 @@ class ContributionListItem extends React.Component {
         <View style={styles.listItem}>
           <Image
             source={{ uri }}
-            style={{width: '100%', height: 300}}
+            style={{width: '100%', height: 300, marginBottom: 10}}
           />
           <Text style={[styles.baseText, styles.listItemLabel]}>{text}</Text>
           <Text style={[styles.baseText, styles.itemAuthor]}>{`${first} ${last}`}</Text>

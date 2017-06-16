@@ -104,7 +104,9 @@ const main = StyleSheet.create({
   },
   listItemLabel: {
     marginTop: 3,
-    fontWeight: '500'
+    marginBottom: 5,
+    fontWeight: '500',
+    lineHeight: 22
   },
   itemAuthor: {
     fontStyle: 'italic'
