@@ -19,8 +19,9 @@ const main = StyleSheet.create({
     paddingLeft: 10,
   },
   container: {
-    marginTop: 0,
-    padding: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    paddingLeft: 20,
     alignItems: 'center',
     // backgroundColor: 'grey'
   },
@@ -28,21 +29,22 @@ const main = StyleSheet.create({
     fontSize: 20
   },
   content: {
+    paddingTop: 20,
     width: '100%'
   },
   nav: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-    // backgroundColor: colors.brand
+    justifyContent: 'center',
+    paddingTop: 25,
+    // paddingBottom: 5,
+    backgroundColor: colors.brand,
+    alignItems: 'center'
   },
   navItem: {
     flex: 1,
     alignItems: 'center',
-    padding: 10,
-  },
-  subNavItem: {
-    padding: 5
+    justifyContent: 'center',
+    height: 44,
   },
   topic: {
     textAlign: 'center',
