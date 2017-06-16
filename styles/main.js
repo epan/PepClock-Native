@@ -111,6 +111,12 @@ const main = StyleSheet.create({
   itemAuthor: {
     fontStyle: 'italic'
   },
+  contributionMedia: {
+    width: '100%',
+    height: 300,
+    marginBottom: 10,
+    borderRadius: 2
+  },
   button: {
     borderRadius: 100,
     backgroundColor: colors.brand,
