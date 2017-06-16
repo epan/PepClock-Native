@@ -126,7 +126,8 @@ const main = StyleSheet.create({
     borderWidth: 3,
     borderColor: colors.brandDark,
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    height: 55
   },
   buttonText: {
     color: '#fff',
