@@ -37,7 +37,7 @@ export default class ContributionForm extends React.Component {
     let { image } = this.state;
 
     return (
-      <ScrollView>
+      <View style={styles.marginBottom}>
         <Text style={styles.baseText}>
           Enter your message
         </Text>
@@ -62,7 +62,7 @@ export default class ContributionForm extends React.Component {
 
 
         <StatusBar barStyle="default" />
-      </ScrollView>
+      </View>
     );
   }
 

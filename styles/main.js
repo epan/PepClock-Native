@@ -104,11 +104,16 @@ const main = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: colors.brand,
     borderWidth: 3,
-    borderColor: colors.brandDark
+    borderColor: colors.brandDark,
+    marginTop: 20,
+    marginBottom: 20
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold'
+  },
+  marginBottom: {
+    marginBottom: 160
   }
 });
 
